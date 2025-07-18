@@ -1,0 +1,310 @@
+.. _dictionary:
+
+Field Descriptions
+==================
+
+The following describes the attributes associated with various checkpoints for which FORTUNA stores data. It is worth mentioning that FORTUNA derives some features directly from public sources, while it also produces additional attributes exclusively within the framework. We label the former as *external* and the latter as *internal*.
+
+For external sources, a stand-alone data dictionary is often provided by the source organization. We refer to those when appropriate, but a more concise version is also included here for completeness.
+
+In the "Data Type" column, we indicate whether each feature is *Original*—i.e., derived directly from actual data records—or *Estimated*, meaning that parametric models were used to infer or impute the values. While this distinction is reliable for internal attributes, for external sources, it is based on our best understanding of their documentation (sometimes marked by ? if vague). Users are advised to consult the original documentation when in doubt.
+
+**Internal Features**
+
+
+.. list-table:: Internal Fields
+   :header-rows: 1
+
+   * - Field Name
+     - Description
+     - Attribute Type
+     - Data Type
+
+   * - bid
+     - Unique building ID based on Open Location Codes (OLC) for each geometry (centroid).
+     - str
+     - Original
+
+   * - bid_dup
+     - Unique building ID based on Open Location Codes (OLC) for each geometry (centroid) + tie-breaker.
+     - str
+     - Original
+
+
+**External Features**
+
+1. **Microsoft Data**
+
+The Microsoft Building Footprints dataset is available at "https://github.com/microsoft/USBuildingFootprints". Below is a summary of its features:
+
+.. list-table:: Microsoft Building Footprints Fields
+   :header-rows: 1
+
+   * - Field Name
+     - Description
+     - Attribute Type
+     - Data Type
+
+   * - release
+     - Data release date
+     - Date
+     - Original
+   * - capture_dates_range
+     - Bing imagery is a composite of multiple sources with varying capture dates.
+     - Date Period
+     - Original
+   * - geometry
+     - Geo-polygon representing building footprint boundaries
+     - Building Footprint Boundaries
+     - Estimated
+
+2. **FEMA Data**
+
+The FEMA Building Footprints dataset is available at "https://disasters.geoplatform.gov/USA_Structures". Below is a summary of its features:
+
+.. list-table:: FEMA Building Attributes
+   :header-rows: 1
+
+
+   * - Field Name
+     - Description
+     - Attribute Type
+     - Data Type
+
+   * - geometry
+     - Geo-polygon representing building footprint boundaries
+     - Building Footprint Boundaries
+     - Estimated
+   * - BUILD_ID
+     - ID assigned to uniquely label footprints. No detail is given, though.
+     - String
+     - Original
+   * - OCC_CLS
+     - Occupation Class
+     - String
+     - Original
+   * - PRIM_OCC
+     - Primary occupation Class
+     - String
+     - Original
+   * - SEC_OCC
+     - Secondary occupation Class
+     - String
+     - Original
+   * - PROP_ADDR
+     - Address
+     - String
+     - Original
+   * - PROP_CITY
+     - City
+     - String
+     - Original
+   * - PROP_ST
+     - Street
+     - String
+     - Original
+   * - PROP_ZIP
+     - ZIP
+     - String
+     - Original
+   * - OUTBLDG
+     - Outbuilding or non primary structure
+     - String
+     - (Original?)
+   * - HEIGHT
+     - Building Height
+     - Single
+     - (Original?)
+   * - SQMETERS
+     - Area in squared-meter
+     - Single
+     - Estimated
+   * - SQFEET
+     - Area in feet-meter
+     - Single
+     - Estimated
+   * - H_ADJ_ELEV
+     - Highest elevation (in meters) of the ground adjacent to the structure
+     - Single
+     - Estimated
+   * - L_ADJ_ELEV
+     - Lowest elevation (in meters) of the ground adjacent to the structure
+     - Single
+     - Original
+   * - FIPS
+     - County Federal Information Processing Standards (FIPS) code
+     - string
+     - Original
+   * - CENSUSCODE
+     - Census tract identifier
+     - string
+     - Original
+   * - PROD_DATE
+     - Production Date
+     - Date
+     - Original
+   * - USNG
+     - United States National Grid (USNG) coordinates
+     - string
+     - Original
+   * - LONGITUDE
+     - geometry centroid longitude
+     - Double
+     - Estimated (because of the estimated polygon)
+   * - LATITUDE
+     - geometry centroid latitude
+     - Double
+     - Estimated
+   * - IMAGE_NAME
+     - Footprint image name in FEMA databse
+     - string
+     - Original
+   * - IMAGE_DATE
+     - Not usable: Footprint image date in FEMA databse
+     - Date
+     - Original
+   * - VAL_METHOD
+     - Validation Method
+     - -
+     - -
+   * - REMARKS
+     - Various remars on the strutures
+     - -
+     - -
+   * - UUID
+     - Universal Unique Identifier
+     - string
+     - Original
+   * - Shape_Length
+     - geometry longest crs in ESPG: 4326 (degree-based)
+     - Double
+     - Estimated
+   * - Shape_Area
+     - geometry area in crs: 4326 (degree-based)
+     - Double
+     - Estimated
+
+
+3. **NSI Data**
+
+The NSI data is available at "https://www.hec.usace.army.mil/confluence/nsi/" with extensive documentation on-site. Below is a summary of its features:
+
+.. list-table:: NSI Attributes
+   :header-rows: 1
+
+
+   * - Field Name
+     - Description
+     - Attribute Type
+     - Data Type
+
+
+   * - fd_id
+     - A number that should be unique for all structures.
+     - Integer
+     - Original
+   * - bid
+     - A building ID. This is the north axis aligned "bounding box" of its footprint represented as the centroid (in grid reference system format) and four cardinal extents.
+     - String
+     - Original
+   * - x
+     - X coordinate (longitude) in GCS WGS84.
+     - Double
+     - Original
+   * - y 
+     - Y coordinate (latitude) in GCS WGS84.
+     - Double
+     - Original
+   * - cbfips
+     - Census block that contains the structure.
+     - String
+     - Original
+   * - st_damcat
+     - Damage category of the structure (e.g., Residential, Commercial, etc.).
+     - String
+     - Original
+   * - occtype
+     - Damage function or occupancy Type defining the structure.
+     - String
+     - Original
+   * - bldgtype
+     - Building type based on structure stability (e.g., M= Masonry, W = Wood).
+     - String
+     - Original + Estimatied (imputation?)
+   * - source
+     - Source of the structure record (e.g., Parcel, HIFLD, NCES).
+     - String
+     - Original
+   * - sqft
+     - Estimated square footage of the structure.
+     - Double
+     - Original + Estimatied (imputation?)
+   * - ftprntid
+     - ID of the building footprint used for estimating other features.
+     - String
+     - Original
+   * - ftprntsrc
+     - Source of the footprint used (e.g., Bing, Oak Ridge, NGA).
+     - String
+     - Original
+   * - found_type
+     - Foundation type (e.g., Crawl, Slab, Basement).
+     - String
+     - Original
+   * - found_ht
+     - Foundation height in feet above ground.
+     - Double
+     - Original
+   * - num_story
+     - Number of stories of the structure.
+     - Double
+     - Both
+   * - val_struct
+     - Value in dollars of the structure.
+     - Double
+     - Estimated
+   * - med_yr_blt
+     - Median year built within the census block.
+     - Integer
+     - Original
+   * - pop2amu65
+     - Population during the day for the structure of people under the age of 65.
+     - Integer
+     - Original
+   * - pop2amo65
+     - Population during the night for the structure of people over the age of 65.
+     - Integer
+     - Original
+   * - pop2pmu65
+     - Population during the day for the structure of people under the age of 65.
+     - Integer
+     - Original
+   * - pop2pmo65
+     - Population during the night for the structure of people over the age of 65.
+     - Integer
+     - Original
+   * - students
+     - Population over age 65 during nighttime.
+     - Integer
+     - Estimated
+   * - u65disable
+     - The percent of the county population over the age of 65 that is expected to have an ambulatory disability.
+     - Flost
+     - Original
+   * - u65siable
+     - The percent of the county population under the age of 65 that is expected to have an ambulatory disability.
+     - Flost
+     - Original
+   * - firmzone
+     - Estimated flood zone (2021).
+     - String
+     - Original
+   * - grnd_elv_m
+     - Ground elevation in meters (NAVD88).
+     - Double
+     - Original
+   * - ground_elv
+     - Ground elevation in feet (NAVD88).
+     - Double
+     - Original
+     

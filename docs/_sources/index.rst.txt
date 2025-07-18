@@ -39,11 +39,22 @@ Fortuna documentation
    Utils
 
 .. toctree::
+   :caption: Attribute Dictionary
+   :maxdepth: 1
+   :numbered: 4
+
+   Dictionary
+
+
+.. toctree::
    :caption: Directory Guide
    :maxdepth: 1
    :numbered: 4
 
    Directory
+
+
+
 
 
 

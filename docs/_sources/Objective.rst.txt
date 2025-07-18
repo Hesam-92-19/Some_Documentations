@@ -7,7 +7,9 @@
 Objective
 ---------
 
-The objective of **FORTUNA** is to establish a building inventory for large-scale hazard assessment and simulation studies. The FORTUNA framework is structured as illustrated in the following image.
+The objective of **FORTUNA** is to establish a building inventory for large-scale hazard assessment and simulation studies.
+
+- The FORTUNA framework is structured as illustrated in the following image.
 
 .. image:: fram.png
    :alt: FORTUNA framework

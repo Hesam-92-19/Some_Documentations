@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="1. Utils Class" href="Utils.html" /> 
+    <link rel="prev" title="1. Field Descriptions" href="Dictionary.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,12 +54,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Utils.html">1. Utils Class</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Attribute Dictionary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Dictionary.html">1. Field Descriptions</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Directory Guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Directory Structure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#description">1.1. Description</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Directory Structure</a></li>
 </ul>
 
         </div>
@@ -87,52 +88,60 @@
            <div itemprop="articleBody">
              
   <section id="directory-structure">
-<h1><span class="section-number">1. </span>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading"></a></h1>
-<p>The <cite>Inventory</cite> directory is the root of the data system. It organizes files into logically separated subdirectories for efficient access and processing throughout the pipeline. The structure is as follows:</p>
+<span id="directory-r"></span><h1><span class="section-number">1. </span>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading"></a></h1>
+<p>The <cite>Inventory</cite> directory serves as the root of the data system. It organizes files into logically separated subdirectories for efficient access and processing throughout the pipeline. The structure is as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Inventory/
-├── Raw data/   [R1]
-│   ├── State/  [R2]
-│      ├── FIPS/    [R3]
-│         ├── fips_building_microsoft.prquet    [R4]
-│         ├── fips_building_fema.prquet [R5]
-│         ├── fips_building_nsi.prquet  [R6]
-│      ├── Microspft.prquet [R7]
-│      ├── Fema.prquet  [R8]
-│      ├── NSI.prquet   [R9]
-├── Transitory data/    [T1]
-│   ├── State/
-│      ├── FIPS/
-│         ├── fips_F_M.prquet   [T2]
-│         ├── fips_F_M_N.prquet [T3]
-│         ├── Fusion_stat.txt   [T4]
+├── Raw data/   [R]
+│   ├── State/  [R-1]
+│      ├── FIPS/    [R-1-1]
+│         ├── fips_building_microsoft.parquet    [R-1-1-1]
+│         ├── fips_building_fema.parquet         [R-1-1-2]
+│         ├── fips_building_nsi.parquet          [R-1-1-3]
+│      ├── Microsoft.parquet                     [R-1-2]
+│      ├── FEMA.parquet                          [R-1-3]
+│      ├── NSI.parquet                           [R-1-4]
+├── Transitory data/    [T]
+│   ├── State/  [T-1]
+│      ├── FIPS/    [T-1-1]
+│         ├── fips_F_M.parquet                   [T-1-1-1]
+│         ├── fips_F_M_N.parquet                 [T-1-1-2]
+│         ├── Fusion_stat.txt                    [T-1-1-3]
 </pre></div>
 </div>
-<section id="description">
-<h2><span class="section-number">1.1. </span>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>R1. <strong>Raw_data/</strong>: Directory Containing pre-processed datasources, herein FEMA, Microsoft and NSI.</p></li>
-<li><p>R2. <strong>State/</strong>: Data are stored in respective folders labeled with their abbreviate names, e.g., Delaware: DE.</p></li>
-<li><p>R3. <strong>FIPS/</strong>: Each state folder is divided into its respective county FIPS code.</p></li>
-<li><p>R4. <strong>fips_building_microsoft.prquet</strong>: Pre-processed Microsoft data for each FIPS code.</p></li>
-<li><p>R5. <strong>fips_building_fema.prquet</strong>: Pre-processed FEMA data for each FIPS code.</p></li>
-<li><p>R6. <strong>fips_building_nsi.prquet</strong>: Pre-processed NSI data for each FIPS code.</p></li>
-<li><p>R7. <strong>Microspft.prquet</strong>: The merged FEMA data for the whole State.</p></li>
-<li><p>R8. <strong>FEMA.prquet</strong>: The merged Microsoft data for the whole State.</p></li>
-<li><p>R9. <strong>NSI.prquet</strong>: The merged Microsoft data for the whole State.</p></li>
-<li><p>T1. <strong>Transitory_data/</strong>: Directory Containing processed data obtained from two or more of the datasources.</p></li>
-<li><p>T2. <strong>fips_F_M.prquet</strong>: Microsoft-FEMA fused data for each FIPS code.</p></li>
-<li><p>T3. <strong>fips_F_M_N.prquet</strong>: Microsoft-FEMA-NSI fused data for each FIPS code.</p></li>
-<li><p>T4. <strong>Fusion_stat.txt</strong>: Data fusion process statistics.</p></li>
+<li><p><strong>R. Raw data/</strong>: Directory containing pre-processed data sources, namely FEMA, Microsoft, and NSI.</p>
+<ul>
+<li><p><strong>R-1. State/</strong>: Data are stored in respective folders labeled with their abbreviated names, e.g., Delaware: <cite>DE</cite>.</p></li>
+<li><p><strong>R-1-1. FIPS/</strong>: Each state folder is subdivided into its respective county FIPS code.</p></li>
+<li><p><strong>R-1-1-1. fips_building_microsoft.parquet</strong>: Pre-processed Microsoft data for each FIPS code.</p></li>
+<li><p><strong>R-1-1-2. fips_building_fema.parquet</strong>: Pre-processed FEMA data for each FIPS code.</p></li>
+<li><p><strong>R-1-1-3. fips_building_nsi.parquet</strong>: Pre-processed NSI data for each FIPS code.</p></li>
+<li><p><strong>R-1-2. Microsoft.parquet</strong>: Merged Microsoft data for the entire state.</p></li>
+<li><p><strong>R-1-3. FEMA.parquet</strong>: Merged FEMA data for the entire state.</p></li>
+<li><p><strong>R-1-4. NSI.parquet</strong>: Merged NSI data for the entire state.</p></li>
 </ul>
-<p>Note: The <cite>Inventory</cite> directory is typically assumed to be the current working directory (cwd), assgned by the user as parameter “cwd” in the code.</p>
-</section>
+</li>
+<li><p><strong>T. Transitory data/</strong>: Directory containing processed data obtained from two or more data sources.</p>
+<ul>
+<li><p><strong>T-1. State/</strong>: Data are stored in respective folders labeled with their abbreviated names, e.g., Delaware: <cite>DE</cite>.</p></li>
+<li><p><strong>T-1-1. FIPS/</strong>: Each state folder is subdivided into its respective county FIPS code.</p></li>
+<li><p><strong>T-1-1-1. fips_F_M.parquet</strong>: Microsoft–FEMA fused data for each FIPS code.</p></li>
+<li><p><strong>T-1-1-2. fips_F_M_N.parquet</strong>: Microsoft–FEMA–NSI fused data for each FIPS code.</p></li>
+<li><p><strong>T-1-1-3. Fusion_stat.txt</strong>: Data fusion process statistics.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>Inventory</cite> directory is typically assumed to be the inventory name chosen by the user under the working directory (see <a class="reference internal" href="Data_Fusion.html#data-fusion-main"><span class="std std-ref">Data_Fusion Class</span></a>).</p>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Utils.html" class="btn btn-neutral float-left" title="1. Utils Class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Dictionary.html" class="btn btn-neutral float-left" title="1. Field Descriptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
