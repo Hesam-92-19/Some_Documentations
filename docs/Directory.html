@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. Directory Structure &mdash; Inventory-CHEER_Safe Link 0.1 documentation</title>
+  <title>1. Directory Structure &mdash; FORTUNA 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="2. Hazard_Inv_map Details" href="Details1.html" /> 
+    <link rel="prev" title="1. Utils Class" href="Utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,7 +31,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            Inventory-CHEER_Safe Link
+            FORTUNA
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -45,24 +45,19 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Objective.html">Objective</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Inventory_Loss Link module</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data Fusion module</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Data_Fusion.html">1. Inventory-Loss-Link Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Fusion.html">1. Data_Fusion Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Details.html">2. Data_Fusion Details</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Input Data Specifications</span></p>
+<p class="caption" role="heading"><span class="caption-text">Utils module</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Inputs.html">1. Input Data Details</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Module Details</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Details.html">1. Define_new_table Details</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Details1.html">2. Hazard_Inv_map Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Utils.html">1. Utils Class</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Directory Guide</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Directory Structure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#directory-tree">1.1. Directory Tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#directory-descriptions">1.2. Directory Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">1.1. Description</a></li>
 </ul>
 </li>
 </ul>
@@ -73,7 +68,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Inventory-CHEER_Safe Link</a>
+          <a href="index.html">FORTUNA</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -92,97 +87,44 @@
            <div itemprop="articleBody">
              
   <section id="directory-structure">
-<span id="dir-section"></span><h1><span class="section-number">1. </span>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading"></a></h1>
-<p>The <cite>cwd</cite> parameter defined by the user at the instantiation of the Loss module becomes the root directory for storing all outputs and processed files.</p>
-<section id="directory-tree">
-<h2><span class="section-number">1.1. </span>Directory Tree<a class="headerlink" href="#directory-tree" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cwd/
-├── CHEER_Safe_data/           [C]
-│   ├── All_configs.csv        [C-1]
-│   ├── Lookup.pkl             [C-2]
-├── Hazards/                   [H]
-│   ├── Hazard_X/              [H-1]
-│       ├── hazard_x.parquet/.shp  [H-1-1]
-├── Inventory/                 [I]
-│   ├── Inventory_Y.parquet/.shp   [I-1]
-├── Test/                      [T]
-├── Intermediate_outputs/      [IO]
-├── Inv_Updated_Hazard/        [IU]
-├── Loss_estimates/            [L]
-│   ├── Hazard_X/              [L-1]
-│       ├── Inventory_Y/       [L-1-1]
-│           ├── Loss_DF.parquet        [L-1-1-1]
-│           ├── hazard_x.parquet/.shp  [L-1-1-2]
-│           ├── zones/                 [L-1-1-3]
-│               ├── zone_z/            [L-1-1-3-1]
-│                   ├── hazard_x.parquet  [L-1-1-3-1-1]
-├── User_Output/               [UO]
-    ├── Hazard_X/              [UO-1]
-        ├── Inventory_Y/       [UO-1-1]
-            ├── Loss_DF.csv         [UO-1-1-1]
-            ├── zones/              [UO-1-1-2]
-                ├── zone_z/         [UO-1-1-2-1]
-                ├── zone_N.csv      [UO-1-1-2-2]
-                    ├── hazard_x.csv    [UO-1-1-2-1-1]
+<h1><span class="section-number">1. </span>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading"></a></h1>
+<p>The <cite>Inventory</cite> directory is the root of the data system. It organizes files into logically separated subdirectories for efficient access and processing throughout the pipeline. The structure is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Inventory/
+├── Raw data/   [R1]
+│   ├── State/  [R2]
+│      ├── FIPS/    [R3]
+│         ├── fips_building_microsoft.prquet    [R4]
+│         ├── fips_building_fema.prquet [R5]
+│         ├── fips_building_nsi.prquet  [R6]
+│      ├── Microspft.prquet [R7]
+│      ├── Fema.prquet  [R8]
+│      ├── NSI.prquet   [R9]
+├── Transitory data/    [T1]
+│   ├── State/
+│      ├── FIPS/
+│         ├── fips_F_M.prquet   [T2]
+│         ├── fips_F_M_N.prquet [T3]
+│         ├── Fusion_stat.txt   [T4]
 </pre></div>
 </div>
-</section>
-<section id="directory-descriptions">
-<h2><span class="section-number">1.2. </span>Directory Descriptions<a class="headerlink" href="#directory-descriptions" title="Link to this heading"></a></h2>
-<ul>
-<li><p><strong>[C] `CHEER_Safe_data/`</strong>: Contains essential input files for running the CHEER-Safe loss model.
-- <strong>[C-1] `All_configs.csv`</strong>: CSV file defining all model configurations, including combinations of building archetypes (M), year built, and coastal distance. It includes 48 total configuration entries.
-- <strong>[C-2] `Lookup.pkl`</strong>: Lookup table mapping <cite>[M, C][Wind, Flood] → Loss</cite> values generated from CHEER-Safe. A sample version is provided; users may replace this with their own.</p></li>
-<li><p><strong>[H] `Hazards/`</strong>: Contains hazard data provided by the user.
-- <strong>[H-1] `Hazard_X/`</strong>: Subfolder for a specific hazard scenario (e.g., <cite>TC_Wise</cite>).</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>[H-1-1] `hazard_x.parquet` / `.shp`</strong>: The spatial hazard intensity data (wind, flood) as point geometries.</p></li>
+<section id="description">
+<h2><span class="section-number">1.1. </span>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>R1. <strong>Raw_data/</strong>: Directory Containing pre-processed datasources, herein FEMA, Microsoft and NSI.</p></li>
+<li><p>R2. <strong>State/</strong>: Data are stored in respective folders labeled with their abbreviate names, e.g., Delaware: DE.</p></li>
+<li><p>R3. <strong>FIPS/</strong>: Each state folder is divided into its respective county FIPS code.</p></li>
+<li><p>R4. <strong>fips_building_microsoft.prquet</strong>: Pre-processed Microsoft data for each FIPS code.</p></li>
+<li><p>R5. <strong>fips_building_fema.prquet</strong>: Pre-processed FEMA data for each FIPS code.</p></li>
+<li><p>R6. <strong>fips_building_nsi.prquet</strong>: Pre-processed NSI data for each FIPS code.</p></li>
+<li><p>R7. <strong>Microspft.prquet</strong>: The merged FEMA data for the whole State.</p></li>
+<li><p>R8. <strong>FEMA.prquet</strong>: The merged Microsoft data for the whole State.</p></li>
+<li><p>R9. <strong>NSI.prquet</strong>: The merged Microsoft data for the whole State.</p></li>
+<li><p>T1. <strong>Transitory_data/</strong>: Directory Containing processed data obtained from two or more of the datasources.</p></li>
+<li><p>T2. <strong>fips_F_M.prquet</strong>: Microsoft-FEMA fused data for each FIPS code.</p></li>
+<li><p>T3. <strong>fips_F_M_N.prquet</strong>: Microsoft-FEMA-NSI fused data for each FIPS code.</p></li>
+<li><p>T4. <strong>Fusion_stat.txt</strong>: Data fusion process statistics.</p></li>
 </ul>
-</div></blockquote>
-</li>
-<li><p><strong>[I] `Inventory/`</strong>: Contains inventory files provided by the user.
-- <strong>[I-1] `Inventory_Y.parquet` / `.shp`</strong>: The processed building inventory. Files must be imputed with no missing values (rows with missing values are dropped).</p></li>
-<li><p><strong>[T] `Test/`</strong>: Optional sample data downloaded by the user to test model functionality.</p></li>
-<li><p><strong>[IO] `Intermediate_outputs/`</strong>: Stores intermediate files generated during loss computations.</p></li>
-<li><p><strong>[IU] `Inv_Updated_Hazard/`</strong>: Contains hazard-adjusted inventory files created as part of intermediate processing.</p></li>
-<li><p><strong>[L] `Loss_estimates/`</strong>: Directory where final <cite>.parquet</cite>-based loss estimates are stored.
-- <strong>[L-1] `Hazard_X/`</strong>: Folder for each hazard analyzed.</p>
-<blockquote>
-<div><ul>
-<li><p><strong>[L-1-1] `Inventory_Y/`</strong>: Folder for loss results tied to a specific inventory.
-- <strong>[L-1-1-1] `Loss_DF.parquet`</strong>: Total loss estimates per hazard instance, across all buildings.
-- <strong>[L-1-1-2] `hazard_x.parquet` / `.shp`</strong>: Detailed loss estimates in million dollars for each building.
-- <strong>[L-1-1-3] `zones/`</strong>: Folder containing zone-level losses, if zoning was applied.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>[L-1-1-3-1] `zone_z/`</strong>: Folder for a specific zone system.
-- <strong>[L-1-1-3-1-1] `hazard_x.parquet`</strong>: Zone-specific losses for each building within <cite>zone_z</cite>.</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p><strong>[UO] `User_Output/`</strong>: Final output summaries in <cite>.csv</cite> format for easier user access.
-- <strong>[UO-1] `Hazard_X/`</strong>: Folder for a specific hazard scenario.</p>
-<blockquote>
-<div><ul>
-<li><p><strong>[UO-1-1] `Inventory_Y/`</strong>: Subfolder for a given inventory.
-- <strong>[UO-1-1-1] `Loss_DF.csv`</strong>: CSV file of total losses for all buildings.
-- <strong>[UO-1-1-2] `zones/`</strong>: Folder for zone-level CSV outputs.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>[UO-1-1-2-1] `zone_z/`</strong>: Folder for a specific zone system.
-- <strong>[UO-1-1-2-1-1] `hazard_x.csv`</strong>: Losses for buildings in <cite>zone_z</cite> under hazard instance <cite>hazard_x</cite>.</p></li>
-<li><p><strong>[UO-1-1-2-2] `zone_N.csv`</strong>: Optional summary CSV of zone-level losses.</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
+<p>Note: The <cite>Inventory</cite> directory is typically assumed to be the current working directory (cwd), assgned by the user as parameter “cwd” in the code.</p>
 </section>
 </section>
 
@@ -190,7 +132,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Details1.html" class="btn btn-neutral float-left" title="2. Hazard_Inv_map Details" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Utils.html" class="btn btn-neutral float-left" title="1. Utils Class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Utils Class &mdash; Inventory-CHEER_Safe Link 0.1 documentation</title>
+  <title>Utils Class &mdash; FORTUNA 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -30,7 +30,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            Inventory-CHEER_Safe Link
+            FORTUNA
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -44,18 +44,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Objective.html">Objective</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Inventory_Loss Link module</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data Fusion module</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Data_Fusion.html">1. Inventory-Loss-Link Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Fusion.html">1. Data_Fusion Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Details.html">2. Data_Fusion Details</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Input Data Specifications</span></p>
+<p class="caption" role="heading"><span class="caption-text">Utils module</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Inputs.html">1. Input Data Details</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Module Details</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Details.html">1. Define_new_table Details</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Details1.html">2. Hazard_Inv_map Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Utils.html">1. Utils Class</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Directory Guide</span></p>
 <ul>
@@ -68,7 +64,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Inventory-CHEER_Safe Link</a>
+          <a href="index.html">FORTUNA</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -88,6 +84,61 @@
              
   <section id="utils-class">
 <h1>Utils Class<a class="headerlink" href="#utils-class" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="Utils.utils">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Utils.</span></span><span class="sig-name descname"><span class="pre">utils</span></span><a class="headerlink" href="#Utils.utils" title="Link to this definition"></a></dt>
+<dd><p>A utility class with static methods for file and geospatial data operations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All methods in this class are static and do not require class instantiation.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.utils.ID_Index">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ID_Index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Utils.utils.ID_Index" title="Link to this definition"></a></dt>
+<dd><p>Adds a unique integer index and an ‘ID’ column to a GeoDataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gdM</strong> (<em>geopandas.GeoDataFrame</em>) – Input GeoDataFrame.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated GeoDataFrame with index and ‘ID’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>geopandas.GeoDataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.utils.get_download_urls">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_download_urls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Utils.utils.get_download_urls" title="Link to this definition"></a></dt>
+<dd><p>Finds downloadable file links from the given URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – The target webpage URL.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of full URLs pointing to downloadable files.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Utils.utils.mk_dir">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mk_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cwd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Utils.utils.mk_dir" title="Link to this definition"></a></dt>
+<dd><p>Creates a directory if it does not exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cwd</strong> (<em>str</em>) – The path to the directory.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
