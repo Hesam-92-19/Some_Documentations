@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data_Fusion Class &mdash; FORTUNA 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            FORTUNA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Objective</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Objective.html">Objective</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Fusion module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Data_Fusion.html">1. Data_Fusion Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Details.html">2. Data_Fusion Details</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Utils.html">1. Utils Class</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Directory Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Directory.html">1. Directory Structure</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FORTUNA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data_Fusion Class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Data_Fusion2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-fusion-class">
+<h1>Data_Fusion Class<a class="headerlink" href="#data-fusion-class" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Data_Fusion.</span></span><span class="sig-name descname"><span class="pre">Data_Fusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cwd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Inventory_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UCLA_Inv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion" title="Link to this definition"></a></dt>
+<dd><p>A class for managing, downloading, and fusing geospatial building inventory datasets, including
+Microsoft, FEMA, NSI, and imputed bounding boxes. Also handles satellite image acquisition and
+spatial data fusion across counties in the U.S.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.cwd">
+<span class="sig-name descname"><span class="pre">cwd</span></span><a class="headerlink" href="#Data_Fusion.Data_Fusion.cwd" title="Link to this definition"></a></dt>
+<dd><p>Path to the working directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.county_bound">
+<span class="sig-name descname"><span class="pre">county_bound</span></span><a class="headerlink" href="#Data_Fusion.Data_Fusion.county_bound" title="Link to this definition"></a></dt>
+<dd><p>GeoDataFrame of U.S. county boundaries with FIPS codes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GeoDataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.us_state_to_abbrev">
+<span class="sig-name descname"><span class="pre">us_state_to_abbrev</span></span><a class="headerlink" href="#Data_Fusion.Data_Fusion.us_state_to_abbrev" title="Link to this definition"></a></dt>
+<dd><p>Dictionary mapping state names to abbreviations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.utils">
+<span class="sig-name descname"><span class="pre">utils</span></span><a class="headerlink" href="#Data_Fusion.Data_Fusion.utils" title="Link to this definition"></a></dt>
+<dd><p>Reference to the helper <cite>utils</cite> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.state_codes">
+<span class="sig-name descname"><span class="pre">state_codes</span></span><a class="headerlink" href="#Data_Fusion.Data_Fusion.state_codes" title="Link to this definition"></a></dt>
+<dd><p>Dictionary mapping state abbreviations to FIPS codes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.Algorithm2">
+<span class="sig-name descname"><span class="pre">Algorithm2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdO</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.Algorithm2" title="Link to this definition"></a></dt>
+<dd><p>Match and fuse Microsoft and FEMA building footprint datasets using spatial relationships and
+imputed bounding boxes. Classifies each matched or unmatched case into categories based on
+spatial criteria (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;, Algorithm 2).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gdM</strong> (<em>GeoDataFrame</em>) – Microsoft building footprint polygons with <cite>ID_M</cite> and <cite>geometry_M</cite>.</p></li>
+<li><p><strong>gdF</strong> (<em>GeoDataFrame</em>) – FEMA building footprint polygons with <cite>ID_F</cite> and <cite>geometry_F</cite>.</p></li>
+<li><p><strong>gdO</strong> (<em>GeoDataFrame</em>) – Imputed bounding boxes with <cite>ID_O</cite> and <cite>geometry_Mo</cite>.</p></li>
+<li><p><strong>Mc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of Microsoft column names to retain.</p></li>
+<li><p><strong>Fc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of FEMA column names to retain.</p></li>
+<li><p><strong>Nc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of NSI column names (optional, unused here). Defaults to ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>GeoDataFrame containing all fused records with a column <cite>Type</cite> indicating fusion category.</p></li>
+<li><p>List of floats representing the Fusion statistics (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;).</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[GeoDataFrame, list[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.Algorithm3">
+<span class="sig-name descname"><span class="pre">Algorithm3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">F</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Stat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.Algorithm3" title="Link to this definition"></a></dt>
+<dd><p>Match NSI point data to fused building footprints (Microsoft + FEMA) using centroid-based spatial matching (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;).</p>
+<p>This function expands NSI matches based on two strategies:
+1. Direct matching between NSI and Microsoft-FEMA fused polygons.
+2. Aided matching based on the imputed bounding boxes.</p>
+<p>It merges NSI attributes to building polygons and updates summary statistics related to NSI coverage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>F</strong> (<em>GeoDataFrame</em>) – Input fused polygon layer (from Algorithm 2) with ‘geometry_F’ and ‘geometry_M’ columns.</p></li>
+<li><p><strong>gdN</strong> (<em>GeoDataFrame</em>) – NSI point dataset with ‘ID_N’ and ‘geometry_N’ columns.</p></li>
+<li><p><strong>gdM</strong> (<em>GeoDataFrame</em>) – Original Microsoft polygons (used for NSI coverage stats).</p></li>
+<li><p><strong>Stat</strong> (<em>list</em>) – A mutable list to which NSI matching statistics will be appended.</p></li>
+<li><p><strong>Mc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of Microsoft column names to retain.</p></li>
+<li><p><strong>Fc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of FEMA column names to retain.</p></li>
+<li><p><strong>Nc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of NSI column names to retain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>M_F_N (GeoDataFrame): Updated fusion layer with NSI attributes and match types.</p></li>
+<li><p>Stat (list[float]): NSI matching states (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;).</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[GeoDataFrame, list[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.FEMA">
+<span class="sig-name descname"><span class="pre">FEMA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.FEMA" title="Link to this definition"></a></dt>
+<dd><p>Download and extract FEMA building footprint data for a specified U.S. state.</p>
+<p>This method queries the <a class="reference external" href="https://disasters.geoplatform.gov/USA_Structures/">FEMA Structures Dataset</a>,
+downloads the ZIP archive containing the GDB file, extracts it, and loads it into a GeoDataFrame.
+It then stores the output in state and county-specific folders and optionally splits the data by county.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – Full name of the U.S. state (e.g., “Florida”).</p></li>
+<li><p><strong>Save_County</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save outputs for each county individually. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">FEMA</span><span class="p">(</span><span class="s2">&quot;Vermont&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.M_F_N_Fusion">
+<span class="sig-name descname"><span class="pre">M_F_N_Fusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Coun_ty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.M_F_N_Fusion" title="Link to this definition"></a></dt>
+<dd><p>Perform full data fusion for a given state: Microsoft, FEMA, NSI, and imputed bounding boxes.</p>
+<p>This method fuses building footprint data from Microsoft and FEMA, matches with NSI point data,
+and includes imputed bounding boxes for unmatched structures. For each county in the specified
+state, it generates fusion files and statistics saved under a “Transitory data” folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – U.S. state name (e.g., “Texas”).</p></li>
+<li><p><strong>Coun_ty</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of county FIPS codes. If empty, all counties in the state are processed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">M_F_N_Fusion</span><span class="p">(</span><span class="s2">&quot;Texas&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">M_F_N_Fusion</span><span class="p">(</span><span class="s2">&quot;California&quot;</span><span class="p">,</span> <span class="n">Coun_ty</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;06037&quot;</span><span class="p">])</span>  <span class="c1"># Los Angeles County only</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.Microsoft">
+<span class="sig-name descname"><span class="pre">Microsoft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.Microsoft" title="Link to this definition"></a></dt>
+<dd><p>Download and organize Microsoft building footprint data for a specified U.S. state.</p>
+<p>Data is retrieved from the <a class="reference external" href="https://github.com/microsoft/USBuildingFootprints">Microsoft USBuildingFootprints repository</a>
+and stored locally in state and county-specific folders.</p>
+<p>Microsoft stores the data at:
+<a class="reference external" href="https://minedbuildings.z5.web.core.windows.net/legacy/usbuildings-v2/">https://minedbuildings.z5.web.core.windows.net/legacy/usbuildings-v2/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – Full name of the U.S. state (e.g., “California”).</p></li>
+<li><p><strong>Save_County</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save outputs separately for each county. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">Microsoft</span><span class="p">(</span><span class="s2">&quot;Texas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.NSI">
+<span class="sig-name descname"><span class="pre">NSI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.NSI" title="Link to this definition"></a></dt>
+<dd><p>Download and organize NSI (National Structure Inventory) 2022 data for a specified U.S. state.</p>
+<p>This method retrieves the GPKG file from the official NSI website
+(<a class="reference external" href="https://nsi.sec.usace.army.mil/downloads/nsi_2022/">NSI Download Page</a>),
+extracts and loads it into a GeoDataFrame, and optionally stores outputs per county.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – Full name of the U.S. state (e.g., “Ohio”).</p></li>
+<li><p><strong>Save_County</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save NSI data separately for each county. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">NSI</span><span class="p">(</span><span class="s2">&quot;Delaware&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.centroid_sdjoin">
+<span class="sig-name descname"><span class="pre">centroid_sdjoin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GeoDataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#Data_Fusion.Data_Fusion.centroid_sdjoin" title="Link to this definition"></a></dt>
+<dd><p>Perform a symmetric spatial join between two GeoDataFrames using centroid containment.</p>
+<p>This method checks for spatial relationships where:
+- The centroid of a geometry in A lies within a geometry in B
+- The centroid of a geometry in B lies within a geometry in A</p>
+<p>The result is a DataFrame with pairs of matched feature indices from A and B.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>GeoDataFrame</em>) – First GeoDataFrame.</p></li>
+<li><p><strong>B</strong> (<em>GeoDataFrame</em>) – Second GeoDataFrame.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A DataFrame with two columns:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index_A</span></code>: Index from A</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index_B</span></code>: Index from B</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.col_names">
+<span class="sig-name descname"><span class="pre">col_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['_x',</span> <span class="pre">'_y']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.col_names" title="Link to this definition"></a></dt>
+<dd><p>Harmonize and extract relevant column names from a merged GeoDataFrame.</p>
+<p>This method resolves column name conflicts caused by <cite>merge</cite> or <cite>sjoin</cite> operations by renaming
+columns with suffixes (e.g., “_x”, “_y”) back to their original names. It collects columns from
+Microsoft, FEMA, and NSI datasets as specified by the user, along with any additional columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gd</strong> (<em>GeoDataFrame</em>) – The merged GeoDataFrame to process.</p></li>
+<li><p><strong>Mc</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – List of Microsoft columns to retain and rename if needed.</p></li>
+<li><p><strong>Fc</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – List of FEMA columns to retain and rename if needed.</p></li>
+<li><p><strong>Nc</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – List of NSI columns to retain and rename if needed.</p></li>
+<li><p><strong>suffix</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Suffixes to remove from merged columns (e.g., [‘_x’, ‘_y’] or [‘_left’, ‘_right’]).</p></li>
+<li><p><strong>extra</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – Additional columns to retain, such as ‘Type’ or ‘group_id’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A subset of the original GeoDataFrame with standardized and selected columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GeoDataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.match_data_county">
+<span class="sig-name descname"><span class="pre">match_data_county</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gd_C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">State_Ab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.match_data_county" title="Link to this definition"></a></dt>
+<dd><p>Generate Open Location Codes (also known as Plus Codes) for a GeoDataFrame of point or polygon geometries.</p>
+<p>The method computes OLCs for the centroid of each geometry using the
+<a class="reference external" href="https://github.com/google/open-location-code">Google Open Location Code library</a>.
+If duplicate codes are found, they are made unique by appending a numeric suffix (e.g., <cite>_1</cite>, <cite>_2</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gd</strong> (<em>GeoDataFrame</em>) – A GeoDataFrame of points or polygons. The centroid is used if geometry is a polygon.</p></li>
+<li><p><strong>level</strong> (<em>int</em><em>, </em><em>optional</em>) – Precision level for the Plus Code. Default is 11 (high precision).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of unique Open Location Codes, one for each geometry.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Data_Fusion.Data_Fusion.open_code">
+<span class="sig-name descname"><span class="pre">open_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Data_Fusion.Data_Fusion.open_code" title="Link to this definition"></a></dt>
+<dd><p>Method to return the Openlocationcode &lt;<a class="reference external" href="https://github.com/google/open-location-code">https://github.com/google/open-location-code</a>&gt;` given a level and a Geodataframe (geo- points or polygon centroids). it also adds a tie-breaker in case of repetition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gd</strong> (<em>GeoDataFrame</em>) – A Geodataframe of points or polygons.</p></li>
+<li><p><strong>level</strong> (<em>Integer</em>) – defines the open-location-code level, pre-set on 11.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The openlocation codes as a list for the given Geodataframe (centroids)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Data_Fusion.</span></span><span class="sig-name descname"><span class="pre">Data_Fusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cwd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Inventory_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UCLA_Inv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>A class for managing, downloading, and fusing geospatial building inventory datasets, including
+Microsoft, FEMA, NSI, and imputed bounding boxes. Also handles satellite image acquisition and
+spatial data fusion across counties in the U.S.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">cwd</span></span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Path to the working directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">county_bound</span></span><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>GeoDataFrame of U.S. county boundaries with FIPS codes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GeoDataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">us_state_to_abbrev</span></span><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Dictionary mapping state names to abbreviations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">utils</span></span><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>Reference to the helper <cite>utils</cite> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">state_codes</span></span><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd><p>Dictionary mapping state abbreviations to FIPS codes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">Algorithm2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdO</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd><p>Match and fuse Microsoft and FEMA building footprint datasets using spatial relationships and
+imputed bounding boxes. Classifies each matched or unmatched case into categories based on
+spatial criteria (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;, Algorithm 2).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gdM</strong> (<em>GeoDataFrame</em>) – Microsoft building footprint polygons with <cite>ID_M</cite> and <cite>geometry_M</cite>.</p></li>
+<li><p><strong>gdF</strong> (<em>GeoDataFrame</em>) – FEMA building footprint polygons with <cite>ID_F</cite> and <cite>geometry_F</cite>.</p></li>
+<li><p><strong>gdO</strong> (<em>GeoDataFrame</em>) – Imputed bounding boxes with <cite>ID_O</cite> and <cite>geometry_Mo</cite>.</p></li>
+<li><p><strong>Mc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of Microsoft column names to retain.</p></li>
+<li><p><strong>Fc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of FEMA column names to retain.</p></li>
+<li><p><strong>Nc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of NSI column names (optional, unused here). Defaults to ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>GeoDataFrame containing all fused records with a column <cite>Type</cite> indicating fusion category.</p></li>
+<li><p>List of floats representing the Fusion statistics (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;).</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[GeoDataFrame, list[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">Algorithm3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">F</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Stat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd><p>Match NSI point data to fused building footprints (Microsoft + FEMA) using centroid-based spatial matching (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;).</p>
+<p>This function expands NSI matches based on two strategies:
+1. Direct matching between NSI and Microsoft-FEMA fused polygons.
+2. Aided matching based on the imputed bounding boxes.</p>
+<p>It merges NSI attributes to building polygons and updates summary statistics related to NSI coverage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>F</strong> (<em>GeoDataFrame</em>) – Input fused polygon layer (from Algorithm 2) with ‘geometry_F’ and ‘geometry_M’ columns.</p></li>
+<li><p><strong>gdN</strong> (<em>GeoDataFrame</em>) – NSI point dataset with ‘ID_N’ and ‘geometry_N’ columns.</p></li>
+<li><p><strong>gdM</strong> (<em>GeoDataFrame</em>) – Original Microsoft polygons (used for NSI coverage stats).</p></li>
+<li><p><strong>Stat</strong> (<em>list</em>) – A mutable list to which NSI matching statistics will be appended.</p></li>
+<li><p><strong>Mc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of Microsoft column names to retain.</p></li>
+<li><p><strong>Fc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of FEMA column names to retain.</p></li>
+<li><p><strong>Nc</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of NSI column names to retain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>M_F_N (GeoDataFrame): Updated fusion layer with NSI attributes and match types.</p></li>
+<li><p>Stat (list[float]): NSI matching states (See documentation as &lt;<a class="reference external" href="https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf">https://github.com/CHEER-Hub/Fortuna/blob/main/src/docs/source/_static/Fusion.pdf</a>&gt;).</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[GeoDataFrame, list[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">FEMA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dd><p>Download and extract FEMA building footprint data for a specified U.S. state.</p>
+<p>This method queries the <a class="reference external" href="https://disasters.geoplatform.gov/USA_Structures/">FEMA Structures Dataset</a>,
+downloads the ZIP archive containing the GDB file, extracts it, and loads it into a GeoDataFrame.
+It then stores the output in state and county-specific folders and optionally splits the data by county.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – Full name of the U.S. state (e.g., “Florida”).</p></li>
+<li><p><strong>Save_County</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save outputs for each county individually. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">FEMA</span><span class="p">(</span><span class="s2">&quot;Vermont&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">M_F_N_Fusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Coun_ty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dd><p>Perform full data fusion for a given state: Microsoft, FEMA, NSI, and imputed bounding boxes.</p>
+<p>This method fuses building footprint data from Microsoft and FEMA, matches with NSI point data,
+and includes imputed bounding boxes for unmatched structures. For each county in the specified
+state, it generates fusion files and statistics saved under a “Transitory data” folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – U.S. state name (e.g., “Texas”).</p></li>
+<li><p><strong>Coun_ty</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of county FIPS codes. If empty, all counties in the state are processed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">M_F_N_Fusion</span><span class="p">(</span><span class="s2">&quot;Texas&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">M_F_N_Fusion</span><span class="p">(</span><span class="s2">&quot;California&quot;</span><span class="p">,</span> <span class="n">Coun_ty</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;06037&quot;</span><span class="p">])</span>  <span class="c1"># Los Angeles County only</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">Microsoft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
+<dd><p>Download and organize Microsoft building footprint data for a specified U.S. state.</p>
+<p>Data is retrieved from the <a class="reference external" href="https://github.com/microsoft/USBuildingFootprints">Microsoft USBuildingFootprints repository</a>
+and stored locally in state and county-specific folders.</p>
+<p>Microsoft stores the data at:
+<a class="reference external" href="https://minedbuildings.z5.web.core.windows.net/legacy/usbuildings-v2/">https://minedbuildings.z5.web.core.windows.net/legacy/usbuildings-v2/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – Full name of the U.S. state (e.g., “California”).</p></li>
+<li><p><strong>Save_County</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save outputs separately for each county. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">Microsoft</span><span class="p">(</span><span class="s2">&quot;Texas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">NSI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<dd><p>Download and organize NSI (National Structure Inventory) 2022 data for a specified U.S. state.</p>
+<p>This method retrieves the GPKG file from the official NSI website
+(<a class="reference external" href="https://nsi.sec.usace.army.mil/downloads/nsi_2022/">NSI Download Page</a>),
+extracts and loads it into a GeoDataFrame, and optionally stores outputs per county.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>State</strong> (<em>str</em>) – Full name of the U.S. state (e.g., “Ohio”).</p></li>
+<li><p><strong>Save_County</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save NSI data separately for each county. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Data_Fusion</span><span class="o">.</span><span class="n">NSI</span><span class="p">(</span><span class="s2">&quot;Delaware&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">centroid_sdjoin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GeoDataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
+<dd><p>Perform a symmetric spatial join between two GeoDataFrames using centroid containment.</p>
+<p>This method checks for spatial relationships where:
+- The centroid of a geometry in A lies within a geometry in B
+- The centroid of a geometry in B lies within a geometry in A</p>
+<p>The result is a DataFrame with pairs of matched feature indices from A and B.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>GeoDataFrame</em>) – First GeoDataFrame.</p></li>
+<li><p><strong>B</strong> (<em>GeoDataFrame</em>) – Second GeoDataFrame.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A DataFrame with two columns:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index_A</span></code>: Index from A</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index_B</span></code>: Index from B</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">col_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['_x',</span> <span class="pre">'_y']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
+<dd><p>Harmonize and extract relevant column names from a merged GeoDataFrame.</p>
+<p>This method resolves column name conflicts caused by <cite>merge</cite> or <cite>sjoin</cite> operations by renaming
+columns with suffixes (e.g., “_x”, “_y”) back to their original names. It collects columns from
+Microsoft, FEMA, and NSI datasets as specified by the user, along with any additional columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gd</strong> (<em>GeoDataFrame</em>) – The merged GeoDataFrame to process.</p></li>
+<li><p><strong>Mc</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – List of Microsoft columns to retain and rename if needed.</p></li>
+<li><p><strong>Fc</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – List of FEMA columns to retain and rename if needed.</p></li>
+<li><p><strong>Nc</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – List of NSI columns to retain and rename if needed.</p></li>
+<li><p><strong>suffix</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Suffixes to remove from merged columns (e.g., [‘_x’, ‘_y’] or [‘_left’, ‘_right’]).</p></li>
+<li><p><strong>extra</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – Additional columns to retain, such as ‘Type’ or ‘group_id’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A subset of the original GeoDataFrame with standardized and selected columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GeoDataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">match_data_county</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gd_C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">State_Ab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Save_County</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Link to this definition"></a></dt>
+<dd><p>Generate Open Location Codes (also known as Plus Codes) for a GeoDataFrame of point or polygon geometries.</p>
+<p>The method computes OLCs for the centroid of each geometry using the
+<a class="reference external" href="https://github.com/google/open-location-code">Google Open Location Code library</a>.
+If duplicate codes are found, they are made unique by appending a numeric suffix (e.g., <cite>_1</cite>, <cite>_2</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gd</strong> (<em>GeoDataFrame</em>) – A GeoDataFrame of points or polygons. The centroid is used if geometry is a polygon.</p></li>
+<li><p><strong>level</strong> (<em>int</em><em>, </em><em>optional</em>) – Precision level for the Plus Code. Default is 11 (high precision).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of unique Open Location Codes, one for each geometry.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id19">
+<span class="sig-name descname"><span class="pre">open_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Link to this definition"></a></dt>
+<dd><p>Method to return the Openlocationcode &lt;<a class="reference external" href="https://github.com/google/open-location-code">https://github.com/google/open-location-code</a>&gt;` given a level and a Geodataframe (geo- points or polygon centroids). it also adds a tie-breaker in case of repetition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gd</strong> (<em>GeoDataFrame</em>) – A Geodataframe of points or polygons.</p></li>
+<li><p><strong>level</strong> (<em>Integer</em>) – defines the open-location-code level, pre-set on 11.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The openlocation codes as a list for the given Geodataframe (centroids)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hesam.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
